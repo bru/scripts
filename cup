@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+args = ARGV.map do |arg|
+  arg
+end
+
+script = if File.directory?(".bundle")
+           args.unshift("exec", "cap")
+           "bundle"
+         else
+           'cap'
+         end
+
+exec(script, *args)
